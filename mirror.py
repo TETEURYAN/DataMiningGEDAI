@@ -1,5 +1,7 @@
+import os
 import requests
 from bs4 import BeautifulSoup
+
 
 def extract_https_links(html):
     https_links = []
@@ -16,7 +18,8 @@ def extract_https_links(html):
     return https_links
 
 def write_links_to_file(links, output_file):
-    with open(output_file, 'w', encoding='utf-8') as file:
+    filepath = os.path.join(output_directory, output_file)
+    with open(filepath, 'w', encoding='utf-8') as file:
         for link in links:
             file.write(link + '\n')
 
@@ -36,6 +39,7 @@ def fetch_and_extract_links_from_file(file_path):
 if __name__ == "__main__":
     file_path = "page.html"  # Substitua pelo caminho do seu arquivo HTML
     output_file = "general.txt"
+    output_directory = 'saved_html'
 
     https_links = fetch_and_extract_links_from_file(file_path)
 
