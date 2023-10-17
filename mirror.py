@@ -6,10 +6,8 @@ from bs4 import BeautifulSoup
 def extract_https_links(html):
     https_links = []
 
-    # Analisar o HTML com BeautifulSoup
     soup = BeautifulSoup(html, 'html.parser')
 
-    # Encontrar todos os links (âncoras) no HTML
     for link in soup.find_all('a', href=True):
         url = link['href']
         if url.startswith('https://www.chicosabetudo.com.br/policia'):
@@ -37,8 +35,8 @@ def fetch_and_extract_links_from_file(file_path):
         print(f"Ocorreu um erro: {str(e)}")
 
 if __name__ == "__main__":
-    file_path = "page.html"  # Substitua pelo caminho do seu arquivo HTML
-    output_file = "general.txt"
+    file_path = "page.html" 
+    output_file = "cst.txt"
     output_directory = 'saved_html'
 
     https_links = fetch_and_extract_links_from_file(file_path)
@@ -48,8 +46,5 @@ if __name__ == "__main__":
         for link in https_links:
             print(link)
 
-        # Escrever os links em um arquivo de texto
         write_links_to_file(https_links, output_file)
         print(f"Links escritos em '{output_file}'")
-    else:
-        print("Nenhum link HTTPS encontrado no arquivo.")
