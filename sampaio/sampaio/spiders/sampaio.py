@@ -35,7 +35,7 @@ class CstSpider(scrapy.Spider):
         auxiliar = BeautifulSoup(nextpage, 'html.parser')
         page = auxiliar.a.get('href')
         if page is not None:
-            yield response.follow(page,callback = self.parse)   
+            yield response.follow(page,callback = self.parse, dont_filter=True)   
         
 
 
