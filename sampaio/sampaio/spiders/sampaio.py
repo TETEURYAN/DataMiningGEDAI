@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 class CstSpider(scrapy.Spider):
     name = "sampaio"
     allowed_domains = ["radiosampaio.com.br"]
-    start_urls = ["https://radiosampaio.com.br/page/?s=palmeira+dos+indios+policia"]
+    start_urls = ["https://radiosampaio.com.br/page/414/?s=arapiraca+policia"]
 
     def parse(self, response):
 
