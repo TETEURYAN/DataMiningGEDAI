@@ -30,13 +30,21 @@ class CstSpider(scrapy.Spider):
                'date' : data,
                'link' : ref,
             }
-        nextpage = response.xpath('//*[@id="_posts_grid-7-109385"]/div[2]/a[4]').get()
+        nextpage = response.css('.next').get()
         
         auxiliar = BeautifulSoup(nextpage, 'html.parser')
         page = auxiliar.a.get('href')
+
+
+        # i = 0
+        # while(i < 240):
+        #     yield response.follow(page,callback = self.parse)   
+
         if page is not None:
-            yield response.follow(page,callback = self.parse, dont_filter=True)   
+            yield response.follow(page,callback = self.parse)   
         
+        # for page_number in range(2, 200):
+        #     page_2 = f'https://radiosampaio.com.br/page/{page_number}/?s=palmeira+dos+indios+policia'
 
 
 
