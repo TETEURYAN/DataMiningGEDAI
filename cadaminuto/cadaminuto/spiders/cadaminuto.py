@@ -8,3 +8,4 @@ class CadaminutoSpider(scrapy.Spider):
 
     def parse(self, response):
         
+
